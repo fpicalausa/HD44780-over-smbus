@@ -1,4 +1,10 @@
-import smbus
+import logging
+try:
+    import smbus
+except ImportError:
+    logging.warning("Cannot import smbus. SMBus transport won't be available")
+    pass
+
 import time
 
 TRANSPORT_DATA_READY_WAIT_S = 0.000005 # The time it takes for a PCF8574 to have stable data on the output.
